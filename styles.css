@@ -156,15 +156,19 @@ input:focus, textarea:focus {
     outline: none;
 }
 
-/* Botões unificados - Versão corrigida */
+/* Botões - Versão Corrigida */
+.form-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
 .submit-button,
 .gift-button {
-    flex: 1;
-    min-width: 200px;
-    text-align: center;
+    width: 100%;
+    padding: 1.2rem;
     background: linear-gradient(135deg, var(--cyber-blue) 0%, var(--cyber-blue-dark) 100%);
-    color: #0a0a0a; /* Removido !important desnecessário */
-    padding: 1rem 2rem;
+    color: #0a0a0a;
     border: none;
     border-radius: 0.3rem;
     font-weight: 600;
@@ -174,24 +178,33 @@ input:focus, textarea:focus {
     transition: all 0.3s ease;
 }
 
-/* Garantindo herança de cor consistente */
-.gift-button {
-    color: #0a0a0a !important; /* Força mesma cor se houver conflito */
-}
-
-@@media (max-width: 480px) {
+/* Desktop */
+@media (min-width: 481px) {
     .form-buttons {
-        flex-direction: column;
-        gap: 1.5rem !important; /* Espaçamento reforçado */
-        margin-top: 1.5rem;
+        gap: 1.5rem;
     }
     
     .submit-button,
     .gift-button {
-        width: 100%;
-        padding: 1.2rem; /* Aumento do padding para melhor toque */
-        margin-bottom: 1.5rem !important; /* Remove margens conflitantes */
+        flex: 1;
     }
+}
+
+/* Mobile - Correção Definitiva */
+@media (max-width: 480px) {
+    .form-buttons {
+        flex-direction: column;
+    }
+    
+    .submit-button {
+        margin-bottom: 1.5rem !important;
+    }
+}
+
+.submit-button:hover,
+.gift-button:hover {
+    box-shadow: 0 0 20px var(--neon-effect);
+    transform: translateY(-2px);
 }
 
 /* Efeitos de glitch */
