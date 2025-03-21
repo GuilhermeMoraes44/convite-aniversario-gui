@@ -190,7 +190,7 @@ input:focus, textarea:focus {
     .gift-button {
         width: 100%;
         padding: 1.2rem; /* Aumento do padding para melhor toque */
-        margin: 0 !important; /* Remove margens conflitantes */
+        margin-bottom: 1.5rem !important; /* Remove margens conflitantes */
     }
 }
 
