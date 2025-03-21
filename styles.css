@@ -179,17 +179,18 @@ input:focus, textarea:focus {
     color: #0a0a0a !important; /* Força mesma cor se houver conflito */
 }
 
-@media (max-width: 480px) {
+@@media (max-width: 480px) {
     .form-buttons {
         flex-direction: column;
-        gap: 1rem; 
-        margin-top: 1rem; 
+        gap: 1.5rem !important; /* Espaçamento reforçado */
+        margin-top: 1.5rem;
     }
     
     .submit-button,
     .gift-button {
         width: 100%;
-        padding: 1rem; 
+        padding: 1.2rem; /* Aumento do padding para melhor toque */
+        margin: 0 !important; /* Remove margens conflitantes */
     }
 }
 
