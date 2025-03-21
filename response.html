@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmação de Presença</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Niver do Gui!</h1>
+        
+        <div class="event-info">
+            <h2>Local do Evento</h2>
+            <p><strong>Cia do Sabor</strong></p>
+            <p>Endereço: Av. Frederico Augusto Ritter, 253 - Vila City, Cachoeirinha/RS</p>
+            
+            <div class="location-link">
+                <a href="https://www.google.com/maps/search/?api=1&query=Companhia+das+pizzas+Cachoeirinha+RS" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   aria-label="Abrir no Google Maps">
+                   📍 Abrir no Google Maps
+                </a>
+            </div>
+            
+            <p>Horário: A partir das 19:30</p>
+            <p>Valor: R$ 100,00</p>
+            <p class="highlight">* Estacionamento gratuito disponível no local</p>
+            <p class="highlight">* Traje casual</p>
+        </div>
+
+        <form class="response-form" onsubmit="sendWhatsApp(event)">
+            <h2>Confirmar Presença</h2>
+            
+            <div class="form-group">
+                <label for="name">Seu nome:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="guests">Número de acompanhantes:</label>
+                <input type="number" id="guests" name="guests" min="0" value="0">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Mensagem (opcional):</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="submit-button">Enviar Confirmação</button>
+                <button type="button" class="gift-button" onclick="openPixModal()">Pix de Presente</button>
+            </div>
+        </form>
+
+        <!-- Modal do PIX -->
+        <div id="pixModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closePixModal()">&times;</span>
+                <h3>Escaneie o QR Code para pagar a mensalidade da minha academia!</h3>
+                <img src="qrcode-pix.png" alt="QR Code PIX" class="qrcode">
+                <p>Caso prefira, segue chave PIX: 51995778981</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendWhatsApp(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const guests = document.getElementById('guests').value;
+            const message = document.getElementById('message').value;
+            
+            const text = `Olá Gui! Confirmo minha presença no teu aniversário!\n\n` +
+                         `*Nome:* ${name}\n` +
+                         `*Acompanhantes:* ${guests || '0'}\n` +
+                         `*Mensagem:* ${message || 'Sem mensagem adicional'}`;
+            
+            window.open(`https://wa.me/5551995778981?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function openPixModal() {
+            document.getElementById('pixModal').classList.add('active');
+        }
+
+        function closePixModal() {
+            document.getElementById('pixModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('pixModal');
+            if (event.target === modal) {
+                closePixModal();
+            }
+        }
+    </script>
+</body>
+</html>
