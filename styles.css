@@ -182,11 +182,14 @@ input:focus, textarea:focus {
 @media (max-width: 480px) {
     .form-buttons {
         flex-direction: column;
+        gap: 1rem; 
+        margin-top: 1rem; 
     }
     
     .submit-button,
     .gift-button {
         width: 100%;
+        padding: 1rem; 
     }
 }
 
